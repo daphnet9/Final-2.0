@@ -20,6 +20,10 @@ public class Main {
 
     public static void commandsList(String userInput)
     {
+        String method = userInput.toLowerCase(); 
+        //Play, calls the adding task method
+        //which then contains an inner loop that will run until the user types "done" or "exit"
+        
         //catalogue for commands
         //!! FIGURE THIS OUT FIRST - try to find a more efficient way than making a long strip of if commands or switch case
     }

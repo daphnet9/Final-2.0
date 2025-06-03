@@ -21,13 +21,34 @@ public class Main {
     public static void commandsList(String userInput)
     {
         String method = userInput.toLowerCase(); 
+        switch (method) {
+            case "play":
+                System.out.println("Loading...");
+                // Here you would call the method to start the game or task management
+                System.out.println("Select your difficulty level: Easy, Medium, Hard");
+                Scanner scanner = new Scanner(System.in);
+                String difficulty = scanner.nextLine().toLowerCase();
+                if (difficulty.equals("easy")) {
+                    System.out.println("You have selected Easy mode. Good luck!");
+                } else if (difficulty.equals("medium")) {
+                    System.out.println("You have selected Medium mode. Challenge accepted!");
+                } else if (difficulty.equals("hard")) {
+                    System.out.println("You have selected Hard mode. Brace yourself!");
+                } else {
+                    System.out.println("Invalid difficulty level. Please try again.");
+                    
+                }
+            default:
+                break;
+        }
+        }
         //Play, calls the adding task method
         //which then contains an inner loop that will run until the user types "done" or "exit"
-        
+
         //catalogue for commands
         //!! FIGURE THIS OUT FIRST - try to find a more efficient way than making a long strip of if commands or switch case
     }
-}
+
 
 //note to self:
 //close scanner at the very end of the program, when user is done with all assignments

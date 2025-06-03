@@ -7,7 +7,7 @@ public class Task {
     private int hours;
     private String description;
     //arraylist "tracker" or "task-list" 
-    ArrayList<Task> tracker = new ArrayList<Task>();
+    static ArrayList<Task> tracker = new ArrayList<Task>();
 
     //note for me: when tracker is empty it should close scanner(i think?) and then print out all the achievements from stats at the end//
 
@@ -22,6 +22,15 @@ public class Task {
     //methods to return the vars 
 
     //var for current task in main class
+
+    public String toString() //converting the task into a string
+    {
+        return "Task Name: " + name + "\n" +
+               "Hours: " + hours + "\n" +
+               "Description: " + description + "\n" +
+               "Reward: " + reward;
+    }
+
     //method to choose a task from arraylist *might have to write an exception for if it goes out of range 
     public static Task chooseTask(ArrayList<Task> tracker, int index) throws ArrayIndexOutOfBoundsException
     {

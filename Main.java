@@ -15,7 +15,6 @@ public class Main {
             String command = scanner.nextLine();
             Main.commandsList(command);
         }
-        scanner.close();
     }
 
     public static void commandsList(String userInput)
@@ -24,20 +23,40 @@ public class Main {
         switch (method) {
             case "play":
                 System.out.println("Loading...");
-                // Here you would call the method to start the game or task management
+            //Selecting the difficulty level
                 System.out.println("Select your difficulty level: Easy, Medium, Hard");
                 Scanner scanner = new Scanner(System.in);
                 String difficulty = scanner.nextLine().toLowerCase();
+                //easy difficulty
                 if (difficulty.equals("easy")) {
                     System.out.println("You have selected Easy mode. Good luck!");
-                } else if (difficulty.equals("medium")) {
+                } 
+                //medium difficulty
+                else if (difficulty.equals("medium")) {
                     System.out.println("You have selected Medium mode. Challenge accepted!");
-                } else if (difficulty.equals("hard")) {
+                    Medium.data(); 
+                    Task newTask = new Medium(Medium.getName(), Medium.getHours(), Medium.getDescription(), Medium.getReward());
+                    Task.tracker.add(newTask);
+                }
+                else if (difficulty.equals("hard")) {
                     System.out.println("You have selected Hard mode. Brace yourself!");
+                    //Hard.data();
+                    //Task newTask = new Hard(Hard.getName(), Hard.getHours(), Hard.getDescription(), Hard.getReward());
+                    //Task.tracker.add(newTask);
                 } else {
                     System.out.println("Invalid difficulty level. Please try again.");
-                    
                 }
+            case "view task":
+                if((Task.tracker).size() == 0)
+                {
+                    System.out.println("You have no tasks yet. Please add a task first.");
+                } else {
+                    for(Task task : Task.tracker) {
+                        System.out.println(task.toString());
+                        System.out.println("-------------------------");
+                    }
+                }
+
             default:
                 break;
         }

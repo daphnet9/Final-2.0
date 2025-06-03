@@ -1,21 +1,35 @@
 //Jia Yi
+import java.util.Scanner;
  public class Medium extends Task {
     private final String difficulty = "Medium";
 
-    private int medReward = 25;
-    private String name;
-    private int hours;
-    private String description;
+    private static int medReward = 25;
+    private static String name;
+    private static int hours;
+    private static String description;
 
-    public void setHours(int h)
+    public static void data()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Name:");
+        Medium.setName(scanner.nextLine());
+        System.out.println("Hours:");
+        Medium.setHours(scanner.nextInt());
+        System.out.println("Description:");
+        Medium.setDescription(scanner.nextLine());
+        System.out.println("Done! Your task has been created.");
+        scanner.close();
+    }
+
+    public static void setHours(int h)
     {
         hours = h;
     }
-    public void setName(String n)
+    public static void setName(String n)
     {
         name = n;
     }
-    public void setDescription(String d)
+    public static void setDescription(String d)
     {
         description = d;
     }
@@ -25,23 +39,23 @@
         super(n, h, de, r);
     }
 
-    public String getDifficulty()
+    public static String getDifficulty()
     {
         return difficulty;
     }
-    public String getName()
+    public static String getName()
     {
         return name;
     }
-    public int getHours()
+    public static int getHours()
     {
         return hours;
     }
-    public String getDescription()
+    public static String getDescription()
     {
         return description;
     }
-    public int getReward()
+    public static int getReward()
     {
         return medReward;
     }

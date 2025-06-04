@@ -1,39 +1,28 @@
 //Jia Yi
 import java.util.Scanner;
  public class Medium extends Task {
-    private final String difficulty = "Medium";
+    private final static String difficulty = "Medium";
 
     private static int medReward = 25;
     private static String name;
     private static int hours;
     private static String description;
 
-    public static void data()
+    public static void creatingTask()
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Name:");
-        Medium.setName(scanner.nextLine());
+        String n = (scanner.nextLine());
         System.out.println("Hours:");
-        Medium.setHours(scanner.nextInt());
+        String h = (scanner.nextLine());
         System.out.println("Description:");
-        Medium.setDescription(scanner.nextLine());
+        String de = (scanner.nextLine());
         System.out.println("Done! Your task has been created.");
+        Task newTask = new Medium(n, Integer.valueOf(h), de, medReward);
+        Task.tracker.add(newTask);
         scanner.close();
     }
 
-    public static void setHours(int h)
-    {
-        hours = h;
-    }
-    public static void setName(String n)
-    {
-        name = n;
-    }
-    public static void setDescription(String d)
-    {
-        description = d;
-    }
-    
     public Medium(String n, int h, String de, int r)
     {
         super(n, h, de, r);
@@ -43,19 +32,19 @@ import java.util.Scanner;
     {
         return difficulty;
     }
-    public static String getName()
+    public String getName()
     {
         return name;
     }
-    public static int getHours()
+    public int getHours()
     {
         return hours;
     }
-    public static String getDescription()
+    public String getDescription()
     {
         return description;
     }
-    public static int getReward()
+    public int getReward()
     {
         return medReward;
     }

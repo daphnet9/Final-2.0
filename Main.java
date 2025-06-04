@@ -30,22 +30,21 @@ public class Main {
                 //easy difficulty
                 if (difficulty.equals("easy")) {
                     System.out.println("You have selected Easy mode. Good luck!");
-                    Easy.data();
-                    Task newTask = new Easy(Easy.getName(), Easy.getHours(), Easy.getDescription(), Easy.getReward());
-                    Task.tracker.add(newTask);
+                    // Easy.data();
+                    // Task newTask = new Easy(Easy.getName(), Easy.getHours(), Easy.getDescription(), Easy.getReward());
+                    // Task.tracker.add(newTask);
                 } 
                 //medium difficulty
                 else if (difficulty.equals("medium")) {
                     System.out.println("You have selected Medium mode. Challenge accepted!");
-                    Medium.data(); 
-                    Task newTask = new Medium(Medium.getName(), Medium.getHours(), Medium.getDescription(), Medium.getReward());
-                    Task.tracker.add(newTask);
+                    Medium.creatingTask(); 
                 }
                 else if (difficulty.equals("hard")) {
-                    System.out.println("You have selected Hard mode. Brace yourself!");
-                    Hard.data();
-                    Task newTask = new Hard(Hard.getName(), Hard.getHours(), Hard.getDescription(), Hard.getReward());
-                    Task.tracker.add(newTask)
+                    System.out.println("You have selected Hard mode. Bplay
+                    race yourself!");
+                    // Hard.data();
+                    // Task newTask = new Hard(Hard.getName(), Hard.getHours(), Hard.getDescription(), Hard.getReward());
+                    // Task.tracker.add(newTask)
                 }
                 else if (difficulty.equals("done"))
                 {
@@ -64,8 +63,7 @@ public class Main {
                         System.out.println("-------------------------");
                     }
                 }
-            default:
-                System.out.println("Invalid command.");
+                break;
         }
         }
         //Play, calls the adding task method

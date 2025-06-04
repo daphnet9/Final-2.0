@@ -2,10 +2,10 @@
 import java.util.ArrayList;
 
 public class Task {
-    private int reward;
-    private String name;
-    private int hours;
-    private String description;
+    private static int reward;
+    private static String name;
+    private static int hours;
+    private static String description;
     //arraylist "tracker" or "task-list" 
     static ArrayList<Task> tracker = new ArrayList<Task>();
 

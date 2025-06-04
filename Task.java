@@ -20,7 +20,22 @@ public class Task {
         reward = r;
     }
     //methods to return the vars 
-
+    public String getName()
+    {
+        return name;
+    }
+    public int getHours()
+    {
+        return hours;
+    }
+    public String getDescription()
+    {
+        return description;
+    }
+    public int getReward()
+    {
+        return reward;
+    }
     //var for current task in main class
 
     public String toString() //converting the task into a string
@@ -32,12 +47,19 @@ public class Task {
     }
 
     //method to choose a task from arraylist *might have to write an exception for if it goes out of range 
-    public static Task chooseTask(ArrayList<Task> tracker, int index) throws ArrayIndexOutOfBoundsException
+    public static Task chooseTask(ArrayList<Task> tracker, String taskName) throws ArrayIndexOutOfBoundsException
     {
-        Task current = tracker.get(index);
-        System.out.println("Your chosen task is: " + current.getName()); //after including the method
+        Task current = null; //initialize current task as null
+        for (Task task : tracker) {
+            if ((task.getName().toLowerCase()).equals(taskName)) { //return the task if found
+                current = task; //set the current task to the one found
+            }
+        }
+        return current; //after including the method
     }
 
-    
+    public void deductReward(int deduction) {
+        this.reward = this.reward - deduction; //update the reward with the new value
+    }
     //update reward (deduction) 
 }

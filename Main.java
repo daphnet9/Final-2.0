@@ -30,6 +30,9 @@ public class Main {
                 //easy difficulty
                 if (difficulty.equals("easy")) {
                     System.out.println("You have selected Easy mode. Good luck!");
+                    Easy.data();
+                    Task newTask = new Easy(Easy.getName(), Easy.getHours(), Easy.getDescription(), Easy.getReward());
+                    Task.tracker.add(newTask);
                 } 
                 //medium difficulty
                 else if (difficulty.equals("medium")) {
@@ -40,10 +43,15 @@ public class Main {
                 }
                 else if (difficulty.equals("hard")) {
                     System.out.println("You have selected Hard mode. Brace yourself!");
-                    //Hard.data();
-                    //Task newTask = new Hard(Hard.getName(), Hard.getHours(), Hard.getDescription(), Hard.getReward());
-                    //Task.tracker.add(newTask);
-                } else {
+                    Hard.data();
+                    Task newTask = new Hard(Hard.getName(), Hard.getHours(), Hard.getDescription(), Hard.getReward());
+                    Task.tracker.add(newTask)
+                }
+                else if (difficulty.equals("done"))
+                {
+                    break;
+                }
+                else {
                     System.out.println("Invalid difficulty level. Please try again.");
                 }
             case "view task":
@@ -56,9 +64,8 @@ public class Main {
                         System.out.println("-------------------------");
                     }
                 }
-
             default:
-                break;
+                System.out.println("Invalid command.");
         }
         }
         //Play, calls the adding task method

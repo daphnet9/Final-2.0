@@ -24,4 +24,5 @@ public class Stats {
     //method to update avatar AND another method to select avatar from arraylist
 
     //add avatar to array(?) by making an addAvatar() which calls the random method from gacha and adds it//
+    
 }

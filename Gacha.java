@@ -3,6 +3,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Gacha {
+
+    public static String gachaUI()
+    {
+        String welcome = "Welcome to the Gacha! Type \"ROLL\" to roll, or type \"EXIT\" to exit the Gacha.";
+        String line = "---------------------------------------------------------------------------------";
+        String details = "| Your Dabloons: " + "\n" + "| Roll cost: 300"; //Stats.coinPouch() after dabloons ; implement this after stats class is done
+        return welcome + "\n" + line + "\n" + details + "\n" + line;
+    }
     //arraylist with all the possible rolls
     public static String[] pool = {
         "(•‿•)", "(◑‿◐)", "…ᘛ⁐̤ᕐᐷ", "=＾● ⋏ ●＾=", "(¬‿¬)",

@@ -9,6 +9,7 @@ public class Clock extends TimerTask {
 
     @Override
     public void run() {
+        
         //seconds goes first, then minutes, then hours
         //when seconds reached 0, it resets to 59 and minutes decrements by 1
         //when minutes reaches 0, it resets to 59 and hours decrements by 1

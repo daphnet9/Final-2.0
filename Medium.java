@@ -14,13 +14,12 @@ import java.util.Scanner;
         System.out.println("Name:");
         String n = (scanner.nextLine());
         System.out.println("Hours:");
-        String h = (scanner.nextLine());
+        String h = (scanner.nextLine()); 
         System.out.println("Description:");
         String de = (scanner.nextLine());
-        System.out.println("Done! Your task has been created.");
+        System.out.println("Done! Your task has been created. Type in the difficulty for a new task.");
         Task newTask = new Medium(n, Integer.valueOf(h), de, medReward);
         Task.tracker.add(newTask);
-        scanner.close();
     }
 
     public Medium(String n, int h, String de, int r)

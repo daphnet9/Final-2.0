@@ -95,8 +95,8 @@ public class Main {
                     System.out.println("testing view stats");
             }
             else if(method.equals("gacha")){
-                System.out.println("");
-                //welcomes the user by printing out a whole statement that looks like a ui
+                Gacha.gachaUI(); 
+                
                 //if player says to roll - prints out what is rolled and dedicts the cost from the coin pouch
                 //if insufficient, print out something that tells the user that its not possible
             }

@@ -13,9 +13,10 @@ public class Gacha {
     }
     //arraylist with all the possible rolls
     public static String[] pool = {
-        "(•‿•)", "(◑‿◐)", "…ᘛ⁐̤ᕐᐷ", "=＾● ⋏ ●＾=", "(¬‿¬)",
-        "ʕ•ᴥ•ʔ", "╰(°▽°)╯", "ʕっ•ᴥ•ʔっ", "ʕ•́ᴥ•̀ʔっ", "ʕ◕ᴥ◕ʔ",
-        "/ᐠ｡‸｡ᐟ\""
+        ":)", ":(", ":D", "XD", ":-)", ":]",
+        "=)", ":3", ">:(", ":/",
+        "(•‿•)", "…ᘛ⁐̤ᕐᐷ", "=＾● ⋏ ●＾=", "(¬‿¬)",
+        "ʕ•ᴥ•ʔ", "╰(°▽°)╯", "ʕっ•ᴥ•ʔっ", "ʕ•́ᴥ•̀ʔっ", "ʕ◕ᴥ◕ʔ"
     };
     
     public static void setPool (ArrayList<String> gacha, String[] rolls) 

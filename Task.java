@@ -66,14 +66,14 @@ public class Task {
             throw new ArrayIndexOutOfBoundsException("Invalid task number. Please select a valid task.");
         }
         else {
-            current = tracker.get(index); //get the task at the specified index
-            System.out.println("You have selected: " + "\n" + current.toString()); //print out the task name
+            current = tracker.get(index); 
+            System.out.println("You have selected: " + "\n" + current.toString()); 
         }
-        return current; //return the current task
+        return current; 
     }
 
     public void deductReward(int deduction) {
-        this.reward = this.reward - deduction; //update the reward with the new value
+        this.reward = this.reward - deduction; 
     }
-    //update reward (deduction) 
+    
 }

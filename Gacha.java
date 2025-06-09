@@ -32,7 +32,7 @@ public class Gacha {
         int index = rand.nextInt(pool.size());
         String result = pool.get(index);
         System.out.println("You rolled: " + result);
-        System.out.println("Dabloons left: " + (Stats.getDabloons() - 300));
+        System.out.println("Dabloons left: " + Stats.getDabloons());
         return result;
     }
 

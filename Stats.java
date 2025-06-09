@@ -8,7 +8,6 @@ public class Stats {
     static private String currentAvatar = "";
     static private ArrayList<String> avatars = new ArrayList<>();
     static private ArrayList<String> achievements = new ArrayList<>();
-    // private int exp = 0;
     
     public void addAvatar(String avatar) {
         avatars.add(avatar);
@@ -67,12 +66,6 @@ public class Stats {
     public static void incrementTaskCount() {
         taskCount++;
     }
-    // private void checkLevelUp() {
-    //     if(exp >= level * 50) {
-    //         level++;
-    //         System.out.println("Level up! You are now level " + level + ".");
-    //     }
-    // }
 
     public static void addDabloons(int addedAmount) {
         dabloons += addedAmount;

@@ -11,7 +11,7 @@ public class Gacha {
         String details = "| Your Dabloons: " + Stats.getDabloons() + "\n" + "| Roll cost: 300"; 
         return welcome + "\n" + line + "\n" + details + "\n" + line;
     }
-    //arraylist with all the possible rolls
+    
     public static String[] pool = {
         ":)", ":(", ":D", "XD", ":-)", ":]",
         "=)", ":3", ">:(", ":/",
@@ -35,8 +35,4 @@ public class Gacha {
         System.out.println("Dabloons left: " + Stats.getDabloons());
         return result;
     }
-
-    //method that returns the indexes of array (just a method for ourselves to keep track)
-
-    //method that randomizes a number in the range of the array and gets the item at that index (return function)
 }

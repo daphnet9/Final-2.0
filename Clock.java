@@ -4,11 +4,9 @@ import java.util.Scanner;
 public class Clock {
 
     private long timer = 0;
-    private boolean isRunning = false;
 
     public Clock(int t) {
         this.timer = t * 60000;
-        this.isRunning = true;
     }
 
     public void startTimer(Scanner scanner, Task task) throws InterruptedException

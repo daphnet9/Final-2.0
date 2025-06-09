@@ -115,6 +115,7 @@ public class Main {
                 System.out.println("Level: " + Stats.getLevel());
                 System.out.println("Tasks Completed: " + Stats.getTaskCount());
                 System.out.println("Current Avatar: " + Stats.currentAvatar());
+                System.out.println("Commands: Change avatar | View closet | View achievements"); 
             }
             else if(method.equals("gacha")){
                 System.out.println(Gacha.gachaUI()); 
@@ -125,6 +126,7 @@ public class Main {
                     if(rolling.equals("roll")){
                         if(Stats.getDabloons() >= 300) { 
                             Gacha.roll(gacha); 
+                            Stats.addDabloons(-300);
                         } else {
                             System.out.println("You do not have enough dabloons to roll.");
                         }

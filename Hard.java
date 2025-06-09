@@ -11,11 +11,11 @@ public class Hard extends Task {
     {
         System.out.println("Name:");
         String n = (scanner.nextLine());
-        System.out.println("Hours:");
+        System.out.println("Time:");
         int h = Integer.parseInt(scanner.nextLine());
         System.out.println("Description:");
         String de = (scanner.nextLine());
-        System.out.println("Done! Your task has been created.");
+        System.out.println("Task created! Add a new task or type 'done' to finish.");
         Task hard = new Hard(n, h, de, hardReward);
         Task.addTask(hard); 
     }

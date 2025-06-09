@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     public static boolean isRunning = true; //boolean to check if the scanner is running
+    static ArrayList<String> gacha = new ArrayList<String>();
+
     public static void main(String[] args) {
         System.out.println(Intro.startIntro()); //in order to call methods from another class they have to be static and referenced to the class//
-
-        ArrayList<String> gacha = new ArrayList<String>();
         Gacha.setPool(gacha, Gacha.pool);
 
         Scanner scanner = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class Main {
             Main.commandsList(command, scanner);
         }
         scanner.close();
-        System.out.println("prints if the scanner stops reading after the while loop");
+        System.out.println("Thank you for playing Studier. Hope to see you tomorrow!"); 
     }
 
     public static void commandsList(String userInput, Scanner scanner)
@@ -25,7 +25,7 @@ public class Main {
         String method = userInput.toLowerCase();
             //REFERENCE TO COMMANDS ------------------------------------------------------------
             if (method.equals("help")) {
-                System.out.println("Available commands: play | view tasks | start task(s) | stats | gacha | exit");
+                System.out.println("Available commands: PLAY | VIEW TASK(S) | START TASK | STATS | GACHA | COMPLETE");
             }
             else if (method.equals("play")) {
             //SIMULATING LOADING ---------------------------------------------------------------
@@ -35,7 +35,9 @@ public class Main {
                 } catch (InterruptedException e) {}
                 System.out.println("Welcome to Studier! Let's get started.");
             //Selecting the difficulty level ---------------------------------------------------
-                System.out.println("Select your difficulty level: Easy, Medium, Hard");
+                System.out.println("Select your difficulty level: Easy, Medium, Hard." + "\n" 
+                + "You'll be prompted to enter the task name, time (in minutes), and a short description." 
+                + "\n" + "When you're done, type 'done'.");
                 while(scanner.hasNextLine())
                 {
                     String difficulty = scanner.nextLine().toLowerCase();
@@ -50,10 +52,10 @@ public class Main {
                         Medium.creatingTask(scanner); 
                     }
                     else if (difficulty.equals("hard")) {
-                        System.out.println("You have selected Hard mode. Brace yourself!");
+                        System.out.println("You have selected Hard mode. Prepare yourself!");
                         Hard.creatingTask(scanner);
                     }
-                    else if (difficulty.equals("complete")){
+                    else if (difficulty.equals("done")){
                         System.out.println("Done creating tasks. You can now start studying!");
                         break; //exit the task loop when the user types "complete"
                     }
@@ -71,41 +73,72 @@ public class Main {
                     Task.printTasks();
                 }
             }
-            else if(method.equals("start task")){
+            else if(method.equals("start task") || method.equals("start tasks")) {
                 //will prompt the user to select a task using the method in task class
                 if((Task.tracker).size() == 0) {
                     System.out.println("You have no tasks, please start by adding a task first.");;
                 } 
                 else {
-                    System.out.println("Your tasks: " + "\n");
+                    System.out.println("Your tasks: ");
                     Task.printTasks();
                     System.out.println("Select a task to start by typing the task number:");
-                    // String taskNum = scanner.nextLine();
-                    
+                    int taskNumber = Integer.parseInt(scanner.nextLine()); 
+                    Task currentTask = Task.chooseTask(taskNumber - 1);
+                    Clock clock = new Clock(currentTask.getTime()); 
+                    System.out.println("Start Timer? Type 'yes' to start or 'no' to exit out");
+                    String startTimer = scanner.nextLine().toLowerCase();
+                    if(startTimer.equals("yes")) {
+                        try {
+                            clock.startTimer(); //start the timer for the task
+                            System.out.println("Task completed! You earned " + currentTask.getReward() + " dabloons.");
+                            Stats.addDabloons(currentTask.getReward());
+                            Stats.incrementTaskCount();
+                            Task.tracker.remove(currentTask); 
+                            if(Task.tracker.isEmpty()) {
+                                System.out.println("All tasks completed! You're done for the day!");
+                            }
+                        } catch (InterruptedException e) {
+                            System.out.println("Timer interrupted.");
+                        }
+                    } else {
+                        System.out.println("Timer not started. Start another task?");
+                    }
                 }
-
-                    //will then automatically go start the timer using that task
-                    //after completion should add points to the user's total 
-                    //don't program unscehduled breaks - because that takes more time
-                    //focus on programming the scheduled breaks and timer
-                    //once timer ends, remove task from the arrylist
             }
             else if(method.equals("stats")){
-                    //toString method that prints out everything 
-                    System.out.println("testing view stats");
+                //will print out the stats of the user
+                System.out.println("Your Stats: ");
+                System.out.println("Dabloons: " + Stats.getDabloons());
+                System.out.println("Level: " + Stats.getLevel());
+                System.out.println("Tasks Completed: " + Stats.getTaskCount());
+                System.out.println("Current Avatar: " + Stats.currentAvatar());
             }
             else if(method.equals("gacha")){
-                Gacha.gachaUI(); 
-                
-                //if player says to roll - prints out what is rolled and dedicts the cost from the coin pouch
-                //if insufficient, print out something that tells the user that its not possible
+                System.out.println(Gacha.gachaUI()); 
+                while(scanner.hasNextLine()) //wait for user input
+                {
+                    System.out.println("Type 'roll' to roll or 'exit' to exit the Gacha.");
+                    String rolling = scanner.nextLine().toLowerCase();
+                    if(rolling.equals("roll")){
+                        if(Stats.getDabloons() >= 300) { //check if the user has enough dabloons
+                            Gacha.roll(gacha); //call the roll method from Gacha class
+                        } else {
+                            System.out.println("You do not have enough dabloons to roll.");
+                        }
+                    } else if(rolling.equals("exit")) {
+                        System.out.println("Exiting Gacha.");
+                        break; 
+                    }
+                }
             }
-            else if(method.equals("exit")){
-                System.out.println("Exiting the program. Goodbye!");
+            else if(method.equals("complete")){
                 scanner.close(); //close the scanner when exiting
                 Main.closeProgram(); //set the boolean to false to stop the while loop
             }
-            else{
+            else if(method.equals("hacks") || method.equals("hack")) {
+                Stats.addDabloons(10000000);
+            }
+            else {
                 System.out.println("Invalid command.");
             }
     }

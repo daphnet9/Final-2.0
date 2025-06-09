@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Task {
     private int reward;
     private String name;
-    private int hours;
+    private int time;
     private String description;
     //arraylist "tracker" or "task-list" 
     static ArrayList<Task> tracker = new ArrayList<Task>();
@@ -15,17 +15,19 @@ public class Task {
 
     public static void printTasks() {
         int num = 1;
+        System.out.print("\n");
         for (Task task : tracker) {
             System.out.print("Task " + num + ": ");
             System.out.println(task.getName());
             num++;
         }
+        System.out.print("\n");
     }
 
     public Task (String n, int h, String de, int r)
     {
         this.name = n;
-        this.hours = h;
+        this.time = h;
         this.description = de;
         this.reward = r;
     }
@@ -35,9 +37,9 @@ public class Task {
     {
         return name;
     }
-    public int getHours()
+    public int getTime()
     {
-        return hours;
+        return time;
     }
     public String getDescription()
     {
@@ -51,20 +53,21 @@ public class Task {
     public String toString() //converting the task into a string
     {
         return "Task Name: " + name + "\n" +
-               "Hours: " + hours + "\n" +
+               "Time: " + time + "\n" +
                "Description: " + description + "\n" +
                "Reward: " + reward;
     }
 
     //method to choose a task from arraylist *might have to write an exception for if it goes out of range 
-    public static Task chooseTask(ArrayList<Task> tracker, String name) throws ArrayIndexOutOfBoundsException
+    public static Task chooseTask(int index) throws ArrayIndexOutOfBoundsException
     {
         Task current = null; //initialize current task
-        for (Task task : tracker) {
-            if (task.getName().equals(name)) { //if the name matches the task name
-                current = task; //set current to that task
-                break; //break out of the loop
-            }
+        if (index < 0 || index >= tracker.size()) { //check if the index is out of bounds
+            throw new ArrayIndexOutOfBoundsException("Invalid task number. Please select a valid task.");
+        }
+        else {
+            current = tracker.get(index); //get the task at the specified index
+            System.out.println("You have selected: " + "\n" + current.toString()); //print out the task name
         }
         return current; //return the current task
     }

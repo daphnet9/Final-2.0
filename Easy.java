@@ -11,11 +11,11 @@ public class Easy extends Task {
     {
         System.out.println("Name:");
         String n = (scanner.nextLine());
-        System.out.println("Hours:");
+        System.out.println("Time:");
         int h = Integer.parseInt(scanner.nextLine());
         System.out.println("Description:");
         String de = (scanner.nextLine());
-        System.out.println("Done! Your task has been created.");
+        System.out.println("Task created! Add a new task or type 'done' to finish.");
         Easy easy = new Easy(n, h, de, easyReward);
         Task.tracker.add(easy);
     }

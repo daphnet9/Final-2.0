@@ -8,7 +8,7 @@ public class Gacha {
     {
         String welcome = "Welcome to the Gacha! Type \"ROLL\" to roll, or type \"EXIT\" to exit the Gacha.";
         String line = "---------------------------------------------------------------------------------";
-        String details = "| Your Dabloons: " + "\n" + "| Roll cost: 300"; //Stats.coinPouch() after dabloons ; implement this after stats class is done
+        String details = "| Your Dabloons: " + Stats.getDabloons() + "\n" + "| Roll cost: 300"; 
         return welcome + "\n" + line + "\n" + details + "\n" + line;
     }
     //arraylist with all the possible rolls
@@ -31,6 +31,7 @@ public class Gacha {
         int index = rand.nextInt(pool.size());
         String result = pool.get(index);
         System.out.println("You rolled: " + result);
+        System.out.println("Dabloons left: " + (Stats.getDabloons() - 300));
         return result;
     }
 

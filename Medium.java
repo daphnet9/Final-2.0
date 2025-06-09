@@ -9,11 +9,11 @@ import java.util.Scanner;
     {
         System.out.println("Name:");
         String n = (scanner.nextLine());
-        System.out.println("Hours:");
+        System.out.println("Time:");
         int h = Integer.parseInt(scanner.nextLine()); 
         System.out.println("Description:");
         String de = (scanner.nextLine());
-        System.out.println("Done! Your task has been created. Type in the difficulty for a new task.");
+        System.out.println("Task created! Add a new task or type 'done' to finish.");
         Medium med = new Medium(n, h, de, medReward);
         Task.tracker.add(med);
     }

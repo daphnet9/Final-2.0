@@ -1,23 +1,25 @@
 //Jia Yi
+import java.util.Scanner;
 
 public class Clock {
 
     private long timer = 0;
+    private boolean isRunning = false;
 
     public Clock(int t) {
         this.timer = t * 60000;
+        this.isRunning = true;
     }
 
-    public void startTimer() throws InterruptedException
+    public void startTimer(Scanner scanner, Task task) throws InterruptedException
     {
         long taskTime = System.currentTimeMillis() + timer;
         while (taskTime > System.currentTimeMillis())
         {
-            //System.out.println((taskTime - System.currentTimeMillis())/1000);
+            int minutes = (int) (taskTime - System.currentTimeMillis()) / 60000;
+            int seconds = (int) ((taskTime - System.currentTimeMillis()) / 1000) % 60;
             Thread.sleep(1000);
-            System.out.printf("%02d:%02d\n",
-            (taskTime - System.currentTimeMillis()) / 60000,
-            ((taskTime - System.currentTimeMillis()) / 1000) % 60);
+            System.out.printf("%02d:%02d\r", minutes, seconds);
             System.out.flush();
         }
     }
